@@ -1,0 +1,314 @@
+
+<div class="nav sticky-top ">
+    <a href="#"><i class='fas fa-landmark'  style='font-size:40px'></i></a>
+    <a href="#" routerLink="employees">Employees</a>
+    <a href="#" routerLink="customers">Customers</a>
+    <a href="#" routerLink="staff">Staff</a>
+    <a href="#" routerLink="statement">Statements</a>
+    <button type="button" class="btnlog" routerLink="login" (click)="openModallogin(logintemplate, '')">Login</button>
+
+    <button type="button" class="btnreg" routerLink="register" (click)="openModalreg(registrationtemplate, '')">Register</button>
+</div>
+
+<div class="body"><br>
+
+      <h1 class="Bank-name">BANK MANAGEMENT SYSTEM</h1>
+ 
+       
+      
+  <!-- login page -->
+<ng-template #logintemplate>
+  <div class="modal-header">
+    <h4 class="modal-title1 pull-left">LOGIN</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <label for="username"><i class="fa fa-user"></i> Username</label><br>
+          <input type="text" class="form-control" name="uname" [(ngModel)]=" logUserName" >     
+  </div>
+  <div class="modal-body">
+    <label for="password"><i class='fas fa-lock'></i>  Password</label><br>
+        <input type="password" class="form-control" name="psw" [(ngModel)]=" logPassword" >     
+</div>
+<div class="modal-body">
+    <button type="button" class="btnlog1" (click)="login()">Login</button>
+    <span class="psw"><a href="#">Forgot password?</a></span>
+</div>
+</ng-template>
+
+ <!-- Registration page -->
+ <ng-template #registrationtemplate>
+  <div class="modal-header">
+    <h4 class="modal-title1 pull-left">New User Registration</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <label for="username"><i class="fa fa-user"></i> Name</label><br>
+          <input type="text" class="form-control" name="uname" placeholder="Enter your Name" [(ngModel)]=" regName">     
+  </div>
+  <div class="modal-body">
+    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+        <input type="text" class="form-control"  placeholder="Enter your Email" [(ngModel)]=" regEmail">     
+  </div>
+  <div class="modal-body">
+    <label for="phone"><i class='fas fa-phone'></i> Phone No.</label>
+      <input type="number" class="form-control"  placeholder="Enter your Number" [(ngModel)]=" regPhone">     
+  </div>
+  <div class="modal-body">
+    <label for="password"><i class='fas fa-lock'></i>  Password</label><br>
+        <input type="password" class="form-control" name="psw" placeholder="Enter your Password" [(ngModel)]=" regPassword"  >     
+</div>
+<div class="modal-body">
+  <label for="password"><i class='fas fa-lock'></i> Confirm Password</label><br>
+      <input type="password" class="form-control" name="psw" placeholder="Confirm your Password"  [(ngModel)]=" regConPassword">     
+</div>
+<div class="modal-body">
+    <button type="button" class="btnlog1" (click)=" registration()">Register</button>
+</div>
+</ng-template>
+
+<router-outlet></router-outlet>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <img src="../assets/Image/saving-account.jpg" alt="John" style="width:100%">
+        <p class="title">Saving Account</p>
+        <p class="title1">Enjoy endless benefits and privileges on saving account programmes for you and your family with IndusInd Bank.</p>
+        <p><button class="btn2">Explore More</button></p>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card" style="height: 510px;" >
+        <img src="../assets/Image/fixed-deposit-th.jpg" alt="John" style="width:100%">
+        <p class="title"> Fixed Deposit</p>
+        <p class="title1">Secure your money and watch it grow. Flexible tenures and attractive interest rates.</p>
+        <p><button class="btn1">Explore More</button></p>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card" style="height: 510px;" >
+        <img src="../assets/Image/credit-card.jpg" alt="John" style="width:100%">
+        <p class="title">Credit Card</p>
+        <p class="title1">Spending is rewarding. Get access to unparalleled privileges and more with our Credit Card services.</p>
+        <p><button class="btn1">Explore More</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr style="color:rgb(172, 11, 65) ;">
+
+<div class="container" style="margin-top: 3%; margin-bottom:3%">
+  <h4 style="margin-bottom: 2%; color:rgb(132, 7, 49)">Important Information</h4>
+  <div class="row">
+    <div class="col-lg-2">
+      <p>Ensure that any change in your contact details like address, mobile number, email id etc. is promptly communicated to the Bank.</p>
+    </div>
+    
+    <div class="vl"></div>
+    <div class="col-lg-2">
+      <p>Report the loss of a card to the bank immediately.</p>
+    </div>
+
+    <div class="vl1"></div>
+
+    <div class="col-lg-2">
+      <p>Log off from Internet Banking after every online banking session. Don't just close your browser.</p>
+    </div>
+
+    <div class="vl2"></div>
+
+    <div class="col-lg-2">
+      <p>Always check the last log-in to your internet banking account.</p>
+    </div>
+
+    <div class="vl3"></div>
+
+    <div class="col-lg-2">
+      <p>Always use a secure browser connection (https://) while entering your personal and financial details.</p>
+    </div>
+    <div class="vl4"></div>
+    <div class="col-lg-2">
+      <p>Check on the security certificate of the site where you are sharing any information.</p>
+    </div>
+  </div>
+  
+</div>
+
+<hr style="color:rgb(172, 11, 65) ;">
+
+<div class="container">
+  <h3 style="margin-bottom: 3%;">Deals That Will Interest You</h3>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/Image/clerks.png" alt="Avatar" style="width:400px;height:200px;">
+          </div>
+          <div class="flip-card-back " >
+            <h4 style="margin-top: 5%;">Know More</h4> 
+            <p>15/09/2022</p> 
+            <p>Offer Validity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/Image/samsung.png" alt="Avatar" style="width:400px;height:200px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="margin-top: 5%;">Know More</h4> 
+            <p>15/09/2022</p> 
+            <p>Offer Validity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/Image/seiko.png" alt="Avatar" style="width:400px;height:200px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="margin-top: 5%;">Know More</h4> 
+            <p>15/09/2022</p> 
+            <p>Offer Validity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+
+
+
+
+
+
+ 
+ </div>
+
+
+
+ 
+
+
+
+  <!-- Footer -->
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+      <div class="col-lg-2">
+        <h6 class="head">EXPLORE</h6>
+        <p class="info">Investor Relations</p>
+        <p class="info">Regulatory Disclosure Section</p>
+        <p class="info"> Explore Tab</p>
+        <p class="info">Safe Banking</p>
+        <p class="info">RBI Kehta Hai</p>
+        <p class="info">RBI: Beware of Fictitious Offers</p>
+        <p class="info">Money Transfer to India</p>
+        <p class="info">Internet Banking</p>
+        <p class="info"> Mobile Banking</p>
+
+        <h6 class="head">AWARDS</h6>
+        <p class="info">2022</p>    
+      </div>
+
+      <div class="col-lg-2">
+        <h6 class="head"> POPULAR PRODUCTS</h6>
+        <p class="info"> Savings Accounts</p>
+        <p class="info">Current Accounts</p>
+        <p class="info"> Credit Cards</p>
+        <p class="info">Home Loan</p>
+        <p class="info"> Personal Loan</p>
+        <p class="info">Car Loan</p>
+        <p class="info">Gold Loan</p>
+        <p class="info">Fixed Deposit  </p>
+      </div>
+
+      <div class="col-lg-3">
+        <h6 class="head"> CALCULATORS</h6>
+        <p class="info">Personal Loan EMI Calculator</p>
+        <p class="info">Car Loan EMI Calculator</p>
+        <p class="info"> Two Wheeler EMI Calculator</p>
+        <p class="info">Home Loan EMI Calculator</p>
+        <p class="info"> Recurring Deposit EMI Calculator</p>
+        <p class="info">Fixed Deposit EMI Calculator</p>
+        <p class="info">More Calculators</p>
+      </div>
+
+      <div class="col-lg-3">
+        <h6 class="head">  OTHERS</h6>
+        <p class="info">Customer Care</p>
+        <p class="info">List of Unclaimed Accounts</p>
+        <p class="info"> Form Center</p>
+        <p class="info"> Notice Board</p>
+        <p class="info">News Room</p>
+        <p class="info">Online Assist</p>
+        <p class="info">Site map</p>
+        <p class="info">  About Us</p>
+        <p class="info">Account activation process</p>
+        <p class="info">  Customer Literature on NPAs and SMAs</p>
+
+        <h6 class="head">INITIATIVES</h6>
+        <p class="info"> Debt Service</p>    
+        <p class="info">   Blogs</p>
+        <p class="info"> The Orange Book</p>
+      </div>
+    
+      <div class="col-lg-2">
+        <div class="icon">
+        <h6 class="head"> RATES AND CHARGES</h6>
+        <p class="info"> Interest Rates</p>
+        <p class="info">Service Charges and Fees</p>
+
+        <h6 class="head"> GET SOCIAL</h6>
+
+        <i class="fa fa-facebook" style="font-size:18px;color:white"></i>  
+       <a> <i class="fa fa-twitter" style="font-size:18px;color:white"></i></a>
+       <a><i class="fa fa-instagram" style="font-size:18px;color:white"></i></a>
+       <a><i class="fa fa-youtube-play" style="font-size:18px;color:white"></i></a><br><br>
+
+       <h6 class="head">  CUSTOMER CARE NUMBERS</h6>
+       <p class="info"> Personal Banking</p>
+       <p class="number">  1860 120 7777<p>
+
+        <p class="info">Wealth / Private Banking</p>
+       <p class="number"> 1800 103 8181<p>
+
+        <p class="info">Corporate / Business/ Retail Institutional Banking</p>
+        <p class="number"> 1860 120 6699<p>
+
+          <p class="info">ICICI Bank Credit Card Number</p>
+          <p class="number"> 1800 1020 1239<p>
+
+      </div>
+      </div>
+      
+
+      <p class="info1">Terms & Conditions | Do Not Call Registry | Disclaimer | Multilingual Disclaimer | Code of Commitment | Group Code of Business Conduct and Ethics | Customer Service Policies | <br>Use of Unparliamentary Language by Customers | Privacy | air Practice Code for Lenders</p>   
+      <p class="info" style="text-align: center;">Copyright© 2022 . All rights Reserved.</p>
+
+    </div>
+  </div>
+  </div>
+
+

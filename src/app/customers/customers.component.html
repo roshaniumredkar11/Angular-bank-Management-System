@@ -1,0 +1,122 @@
+<!-- Customers Database -->
+<div class="container">
+    <div class="col lg -12">
+      <div class="heading1">Customers List <button type="button" class="btn" style="margin-left: 80%;"  (click)="openModalc(customertemplate,'null')"><i class="fa fa-user-plus" style='font-size:24px'></i></button></div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Mobile No.</th>
+        <th>Account No.</th>
+        <th>Account Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customerData; let i=index">
+        <td >{{i+1}}</td>
+        <td >{{customer.cName}}</td>
+        <td >{{customer.cDOB |date:'dd/MM/YYYY'}}</td>
+        <td >{{customer.cGender }}</td>
+        <td >{{customer.cMobile}}</td>
+        <td >{{customer.cAccountno}}</td>
+        <td >{{customer.cAccounttype}}</td>
+  
+        <td><button class="btn float-right"  (click)="openModalc(editcustomertemplate,i)" ><i class='fas fa-edit' style="font-size:20px;color:black"></i></button>
+          <button class="btn float-right" (click)="cDelete(i)"><i class='fas fa-trash-alt' style="font-size:20px;"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+   <!-- Add Customer template -->
+  <ng-template #customertemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">  Add New Customer </h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="cclose()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <label for="fname">Name:</label>
+            <input type="text" class="form-control"  placeholder="Enter name" [(ngModel)]="customerName">     
+    </div>
+    <div class="modal-body">
+      <label for="birthday"> Date of Birth:</label><br>
+          <input type="date" id="birthday" style="width: 100%;" value="birthday" name="birthday" [(ngModel)]="customerDOB">    
+    </div>
+    <div class="modal-body">
+      <label for="phone" class="form-label">Gender:</label><br>
+        <input type="radio" id="Male" name="gender" value="Male" [(ngModel)]="customerGender">Male
+        <input type="radio" id="Female" name="gender" value="Female" [(ngModel)]="customerGender">Female
+    </div>
+    <div class="modal-body">
+      <label for="phone"> Mobile No:</label>
+        <input type="number" class="form-control"  placeholder="Enter Mobile No." [(ngModel)]="cutomerMobile">     
+    </div>
+    <div class="modal-body">
+      <label for="phone"> Accout No:</label>
+        <input type="number" class="form-control"  placeholder="Enter Account No." [(ngModel)]="customerAcno">     
+    </div>
+    <div class="modal-body">
+    <label for="sel1" class="form-label">Account Type:</label>
+      <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="customerActype">
+        <option value="" disabled selected>Choose Account type</option>
+        <option>Saving</option>
+        <option>Fixed</option>
+        <option>Current</option>
+      </select>
+      </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="cclear()">Clear</button>
+       <button type="submit" class="btn btn-primary" [disabled]="customerName==''" (click)="csubmit()">Submit</button>
+    </div>
+  </ng-template>
+
+    <!-- Edit Customer template -->
+    <ng-template #editcustomertemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">  Edit Customer </h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="cclose()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <label for="fname"> Name:</label>
+              <input type="text" class="form-control"  placeholder="Enter name" [(ngModel)]="customerName">     
+      </div>
+      <div class="modal-body">
+        <label for="birthday"> Date of Birth:</label><br>
+            <input type="date" id="birthday" style="width: 100%;" value="birthday" name="birthday" [(ngModel)]="customerDOB">    
+      </div>
+      <div class="modal-body">
+        <label for="phone" class="form-label">Gender:</label><br>
+          <input type="radio" id="Male" name="gender" value="Male" [(ngModel)]="customerGender">Male
+          <input type="radio" id="Female" name="gender" value="Female" [(ngModel)]="customerGender">Female
+      </div>
+      <div class="modal-body">
+        <label for="phone">Mobile No:</label>
+          <input type="number" class="form-control"  placeholder="Enter Mobile no." [(ngModel)]="cutomerMobile">     
+      </div>
+      <div class="modal-body">
+        <label for="phone"> Accout No:</label>
+          <input type="number" class="form-control"  placeholder="Enter Account no." [(ngModel)]="customerAcno">     
+      </div>
+      <div class="modal-body">
+      <label for="sel1" class="form-label"> Account Type:</label>
+        <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="customerActype">
+          <option value="" disabled selected>Choose Account type</option>
+          <option>Saving</option>
+          <option>Fixed</option>
+          <option>Current</option>
+        </select>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="cclear()">Clear</button>
+         <button type="submit" class="btn btn-success" (click)="cupdate()">Update</button>
+      </div>
+    </ng-template>

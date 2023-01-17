@@ -1,0 +1,140 @@
+ <!-- Employee Database -->
+ 
+ <div class="container">
+    <div class="col lg -12">
+      <h1 class="heading1">Employees List  <button type="button" class="btn " style="margin-left: 80%;" (click)="openModal(employeetemplate,'null')">  <i class="fa fa-user-plus"  style='font-size:24px'></i></button></h1>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Employee Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile No.</th>
+        <th>Designation</th>
+        <th>Salary</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employeeData; let i=index">
+     
+        <td >{{employee.empId}}</td>
+        <td >{{employee.empName}}</td>
+        <td >{{employee.empEmail }}</td>
+        <td >{{employee.empMobile}}</td>
+        <td >{{employee.empDesignation}}</td>
+        <td >{{employee.empSalary}}</td>
+  
+        <td><button class="btn "  (click)="openModal(editemployeetemplate,i)" ><i class='fas fa-edit' style="font-size:20px;color:black"></i></button>
+          <button class="btn " (click)="eDelete(i)"><i class='fas fa-trash-alt' style="font-size:20px;"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
+   <!-- Add Employee template -->
+  <ng-template #employeetemplate >
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add new Employee</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <label for="phone"> Branch ID:</label>
+        <input type="number" class="form-control"  placeholder="Enter your ID" [(ngModel)]="employeeId">     
+    </div>
+    <div class="modal-body">
+      <label for="fname">Name:</label>
+          <input type="text" class="form-control"  placeholder="Enter your name" [(ngModel)]="employeeName">     
+  </div>
+  <div class="modal-body">
+    <label for="email"> Email:</label>
+        <input type="text" class="form-control"  placeholder="Enter your Email" [(ngModel)]="employeeEmail">     
+  </div>
+  <div class="modal-body">
+    <label for="phone">Mobile No:</label>
+      <input type="number" class="form-control"  placeholder="Enter your Mobile no." [(ngModel)]="employeMobile">     
+  </div>
+  <div class="modal-body">
+    <label for="sel1" class="form-label"> Designation:</label>
+      <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="employeeDesgnation">
+        <option value="" disabled selected>Choose Designation</option>
+        <option value="Manager">Manager</option>
+        <option value="Clerk">Clerk</option>
+        <option value="PO">PO</option>
+        <option value="Office Assistant">Office Assistant</option>
+      </select>
+      </div>
+      <div class="modal-body">
+        <label for="sel1" class="form-label"> Salary:</label>
+          <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="employeeSalary">
+            <option value="" disabled selected>Choose Salary</option>
+            <option>35,000</option>
+            <option>30,000</option>
+            <option>25,000</option>
+            <option>20,000</option>
+          </select>
+          </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)=" clear()">Clear</button>
+     <button type="submit" class="btn btn-primary" [disabled]="employeeName==''" (click)="submit()">Submit</button>
+  </div>
+  </ng-template>
+  
+  
+  <!-- Edit Employee template -->
+  <ng-template #editemployeetemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit Employee</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <label for="phone">Branch ID:</label>
+        <input type="number" class="form-control"  placeholder="Enter your ID" [(ngModel)]="employeeId">     
+    </div>
+    <div class="modal-body">
+      <label for="fname"> Name:</label>
+          <input type="text" class="form-control"  placeholder="Enter your name" [(ngModel)]="employeeName">     
+  </div>
+  <div class="modal-body">
+    <label for="email"> Email:</label>
+        <input type="text" class="form-control"  placeholder="Enter your Email" [(ngModel)]="employeeEmail">     
+  </div>
+  <div class="modal-body">
+    <label for="phone"> Mobile No:</label>
+      <input type="number" class="form-control"  placeholder="Enter your Mobile no." [(ngModel)]="employeMobile">     
+  </div>
+  <div class="modal-body">
+    <label for="sel1" class="form-label"> Designation:</label>
+      <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="employeeDesgnation">
+        <option value="" disabled selected>Choose Designation</option>
+        <option value="Manager">Manager</option>
+        <option value="Clerk">Clerk</option>
+        <option value="PO">PO</option>
+        <option value="Office Assistant">Office Assistant</option>
+        <option>Clerk</option>
+        <option>Manager</option>
+        <option>PO</option>
+        <option>Office Assistant</option>
+      </select>
+      </div>
+      <div class="modal-body">
+        <label for="sel1" class="form-label"> Salary:</label>
+          <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="employeeSalary">
+            <option value="" disabled selected>Choose Salary</option>
+            <option>35,000</option>
+            <option>30,000</option>
+            <option>25,000</option>
+            <option>20,000</option>
+          </select>
+          </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)=" clear()">Clear</button>
+    <button type="update" class="btn btn-success" (click)=" update()">Update</button>
+  </div>
+  </ng-template>
+  

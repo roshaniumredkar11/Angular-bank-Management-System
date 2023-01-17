@@ -1,0 +1,150 @@
+<!-- Staff Database -->
+<div class="container">
+    <div class="col lg -12">
+      <div class="heading1">Staff List  <button type="button" class="btn" style="margin-left: 80%;"  (click)="openModals(stafftemplate,'null')"><i class="fa fa-user-plus" style='font-size:24px'></i></button></div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Mobile No.</th>
+        <th>Branch Id</th>
+        <th>Designation</th>
+        <th>Address </th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let staff of staffData; let i=index">
+        <td >{{i+1}}</td>
+        <td >{{staff.sName}}</td>
+        <td >{{staff.sGender}}</td>
+        <td >{{staff.sMobile }}</td>
+        <td >{{staff.sBranchId}}</td>
+        <td >{{staff.sDesignation}}</td>
+        <td >{{staff.sAddress}}</td>
+  
+        <td><button class="btn float-right"  (click)="openModals(editstafftemplate,i)" ><i class='fas fa-edit' style="font-size:20px;color:black"></i></button>
+          <button class="btn float-right" (click)="deletestaff(i)"><i class='fas fa-trash-alt' style="font-size:20px;"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
+   <!-- Add staff template -->
+  <ng-template #stafftemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add new staff</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="closestaff()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+   
+    <div class="modal-body">
+      <label for="fname"> Name:</label>
+          <input type="text" class="form-control"  placeholder="Enter  name" [(ngModel)]="staffName">     
+  </div>
+  <div class="modal-body">
+    <label for="phone" class="form-label">Gender:</label><br>
+      <input type="radio" id="Male" name="gender" value="Male" [(ngModel)]="staffGender">Male
+      <input type="radio" id="Female" name="gender" value="Female" [(ngModel)]="staffGender">Female
+  </div>
+  
+  <div class="modal-body">
+    <label for="phone">Mobile No:</label>
+      <input type="number" class="form-control"  placeholder="Enter Mobile No" [(ngModel)]="staffMobile">     
+  </div>
+  <div class="modal-body">
+    <label for="phone"> Branch ID:</label>
+      <input type="number" class="form-control"  placeholder="Enter Branch Id" [(ngModel)]="staffBranchId">     
+  </div>
+  
+  <div class="modal-body">
+    <label for="sel1" class="form-label"> Designation:</label>
+      <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="staffDesignation">
+        <option value="" disabled selected>Choose Designation</option>
+        <option>Clerk</option>
+        <option>Manager</option>
+        <option>PO</option>
+        <option>Office Assistant</option>
+      </select>
+      </div>
+      <div class="modal-body">
+        <label for="sel1" class="form-label"> Address:</label>
+        <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="StaffAddress">
+          <option value="" disabled selected>Choose Address</option>
+          <option>Dharampeth</option>
+          <option>Mahal</option>
+          <option>Reshimbag</option>
+          <option>Sadar</option>
+          <option>Sakkardhara</option>
+          <option>Medical Squre</option>
+          <option>Burdi</option>
+        </select> 
+    </div>
+   
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="clearstaff()">Clear</button>
+     <button type="submit" class="btn btn-primary" [disabled]="staffName==''" (click)="submitstaff()">Submit</button>
+  </div>
+  </ng-template>
+  
+  
+  <!-- Edit staff template -->
+  <ng-template #editstafftemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit staff</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="closestaff()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <label for="fname"> Name:</label>
+          <input type="text" class="form-control"  placeholder="Enter name" [(ngModel)]="staffName">     
+  </div>
+  <div class="modal-body">
+    <label for="phone" class="form-label">Gender:</label><br>
+      <input type="radio" id="Male" name="gender" value="Male" [(ngModel)]="staffGender">Male
+      <input type="radio" id="Female" name="gender" value="Female" [(ngModel)]="staffGender">Female
+  </div>
+  
+  <div class="modal-body">
+    <label for="phone"> Mobile No:</label>
+      <input type="number" class="form-control"  placeholder="Enter Mobile No" [(ngModel)]="staffMobile">     
+  </div>
+  <div class="modal-body">
+    <label for="phone"> Branch ID:</label>
+      <input type="number" class="form-control"  placeholder="Enter Branch Id" [(ngModel)]="staffBranchId">     
+  </div>
+  
+  <div class="modal-body">
+    <label for="sel1" class="form-label">Designation:</label>
+      <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="staffDesignation">
+        <option ></option>
+        <option>Clerk</option>
+        <option>Manager</option>
+        <option>PO</option>
+        <option>Office Assistant</option>
+      </select>
+      </div>
+      <div class="modal-body">
+        <label for="sel1" class="form-label"> Address:</label>
+        <select class="form-select" id="sel1" name="sellist1" [(ngModel)]="StaffAddress">
+          <option value="" disabled selected>Choose Address</option>
+          <option>Dharampeth</option>
+          <option>Mahal</option>
+          <option>Reshimbag</option>
+          <option>Sadar</option>
+          <option>Sakkardhara</option>
+          <option>Medical Squre</option>
+          <option>Burdi</option>
+        </select> 
+    </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="clearstaff()">Clear</button>
+    <button type="update" class="btn btn-success" (click)="  updatestaff()">Update</button>
+  </div>
+  </ng-template>
+  

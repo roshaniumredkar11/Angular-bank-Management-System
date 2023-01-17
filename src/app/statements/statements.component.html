@@ -1,0 +1,117 @@
+
+<!--Statement Database -->
+<div class="container">
+    <div class="col lg -12">
+      <div class="heading1">Statement List <button type="button" class="btn"  style="margin-left: 80%;"  (click)="openModalst(statementtemplate,'null')"><i class="fa fa-user-plus" style='font-size:24px'></i></button></div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Name</th>
+        <th>Account No.</th>
+        <th>Date</th>
+        <th>Debit Amount</th>
+        <th>Credit</th>
+        <th>Balance</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let statement of statementData; let i=index">
+        <td >{{i+1}}</td>
+        <td >{{statement.stName}}</td>
+        <td >{{statement.stAccountNo}}</td>
+        <td >{{statement.stDate |date:'dd/MM/YYYY'}}</td>
+        <td >{{statement.stDebit }}</td>
+        <td >{{statement.stCredit}}</td>
+        <td >{{statement.stBalance}}</td>
+  
+        <td><button class="btn float-right"  (click)="openModalst(editstatementtemplate,i)" ><i class='fas fa-edit' style="font-size:20px;color:black"></i></button>
+          <button class="btn float-right" (click)="stDelete(i)"><i class='fas fa-trash-alt' style="font-size:20px;"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
+   <!-- Add statement template -->
+  <ng-template #statementtemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">  Add New Statement </h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="stclose()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <label for="fname"> Name:</label>
+            <input type="text" class="form-control"  placeholder="Enter name" [(ngModel)]="statementName">     
+    </div>
+    <div class="modal-body">
+      <label for="phone"> Accout No:</label>
+        <input type="number" class="form-control"  placeholder="Enter Account No." [(ngModel)]="statementAcNo">     
+    </div>
+    <div class="modal-body">
+      <label for="birthday"> Date:</label><br>
+          <input type="date" id="birthday" style="width: 100%;" value="birthday" name="birthday" [(ngModel)]="statementDate">    
+    </div>
+  
+    <div class="modal-body">
+      <label for="phone">Debit:</label>
+        <input type="number" class="form-control"  placeholder="Enter Debit Amount" [(ngModel)]="statementDebit">     
+    </div>
+    <div class="modal-body">
+      <label for="phone">Credit:</label>
+        <input type="number" class="form-control"  placeholder="Enter Credit Amount" [(ngModel)]="statementCredit">     
+    </div>
+    <div class="modal-body">
+      <label for="phone">Balance:</label>
+        <input type="number" class="form-control"  placeholder="Enter Balance" [(ngModel)]="statementBalance">     
+    </div>
+    
+   
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="stclear()">Clear</button>
+       <button type="submit" class="btn btn-primary" [disabled]="statementName==''" (click)="stsubmit()">Submit</button>
+    </div>
+  </ng-template>
+  
+    <!-- Edit Statement template -->
+   
+    <ng-template #editstatementtemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">  Edit New Statement </h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="stclose()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <label for="fname"> Name:</label>
+              <input type="text" class="form-control"  placeholder="Enter name" [(ngModel)]="statementName">     
+      </div>
+      <div class="modal-body">
+        <label for="phone"> Accout No:</label>
+          <input type="number" class="form-control"  placeholder="Enter Account No." [(ngModel)]="statementAcNo">     
+      </div>
+      <div class="modal-body">
+        <label for="birthday"> Date:</label><br>
+            <input type="date" id="birthday" style="width: 100%;" value="birthday" name="birthday" [(ngModel)]="statementDate">    
+      </div>
+    
+      <div class="modal-body">
+        <label for="phone">Debit:</label>
+          <input type="number" class="form-control"  placeholder="Enter Debit Amount" [(ngModel)]="statementDebit">     
+      </div>
+      <div class="modal-body">
+        <label for="phone">Credit:</label>
+          <input type="number" class="form-control"  placeholder="Enter Credit Amount" [(ngModel)]="statementCredit">     
+      </div>
+      <div class="modal-body">
+        <label for="phone">Balance:</label>
+          <input type="number" class="form-control"  placeholder="Enter Balance" [(ngModel)]="statementBalance">     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  (click)="stclear()">Clear</button>
+        <button type="update" class="btn btn-success" (click)="  stupdate()">Update</button>
+      </div>
+      
+   </ng-template>  
